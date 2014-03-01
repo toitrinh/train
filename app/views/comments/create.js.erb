@@ -1,0 +1,6 @@
+$('#comments').html("<%= escape_javascript(render(:partial => @comments)) %>");
+  $('#paginator').html('<%= j will_paginate(@comments) %>');
+   $('textarea#comment_body').empty();
+ 
+
+

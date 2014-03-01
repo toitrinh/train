@@ -1,0 +1,48 @@
+<div class="container">
+  
+        <div class="row">
+
+            <div class="col-md-12">
+
+                
+
+                <div class="row">
+                  <h2 id="new-post-create"><em><%= link_to 'Create New Post', new_post_path %></em></h2>
+
+                      <% @posts.each do |post| %>
+                      <% @user = User.find_by_id(post.user_id) %>
+    
+                    <div class="col-sm-12 col-xs-12 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h4><strong><em><%= link_to post.title, post %></em></strong>
+                                </h4>
+                                <p><%= post.text[0..98] %>....</p>
+                               </div>
+                            <div class="ratings">
+                                <p class="pull-right"><%= post.comments.count %> comments</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star">by <%= @user.email %></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <% end %>
+                    
+                    
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <h4><a href="#">Like this blog?</a>
+                        </h4>
+                        <p>If you like this blog  share your articles with people!</p>
+                        <a class="btn btn-primary" target="_blank" href="<% root_path %>">View Blog</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+<%= will_paginate @posts %>
+

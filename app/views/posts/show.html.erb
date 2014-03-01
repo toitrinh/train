@@ -1,0 +1,54 @@
+<p>
+	<strong><em><%= t 'title_post' %></em></strong>
+	<%= @post.title %>
+</p>
+
+<p>
+	<strong><em><%= t 'text' %></em>:</strong>
+
+	<%= @post.text %>
+</p>
+
+<% @user = User.find_by_id(@post.user_id) %>
+<p>by  <%= @user.email %> </p>
+
+<h2 class="comment-title"><%= t 'comments' %></h2>
+<div id="comments">
+<%= render @comments %>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<% if user_signed_in?%>
+<%= render "comments/form" %>
+<% else %>
+<p><%= link_to 'You need to login to comment', new_user_session_path %>
+<% end %></p>
+<%= link_to 'Back', posts_path %>
+<div id="paginator">
+<%= will_paginate @comments %>
+</div>
+
+
+<script>
+$(document).ready(function () {
+$("#new_comment").validate({
+debug: true,
+rules: {
+"comment[body]": {required: true, minlength: 5}
+},
+
+submitHandler: function(form){
+      $.rails.handleRemote($(form));
+    }
+});
+});
+</script>

@@ -1,0 +1,38 @@
+<div class="highlight">
+<div class="border-form-div">
+  <h2>Sign up</h2>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <%= f.email_field :email,:class=>"input-block-level", :autofocus => true, :placeholder => 'Email address' %>
+    <%= f.password_field :password, :class=>"input-block-level", :placeholder => 'Password' %>
+    <%= f.password_field :password_confirmation, :class=>"input-block-level", :placeholder => 'Password confirmation' %>
+    <%= f.submit "Sign up",:class=>'btn btn-primary' %>
+  <% end %>
+  <%= render "devise/shared/links" %>
+</div>
+</div>
+
+<script>
+$(document).ready(function () {
+$("#new_user").validate({
+debug: true,
+rules: {      
+	"user[email]": {
+        required: true,
+    },      
+    "user[password]": {
+        required: true,
+        minlength: 6
+    },
+    "user[password_confirmation]": {
+        required: true,
+        minlength: 6,
+        equalTo: "#user_password"
+    }
+},
+submitHandler: function(form){
+      form.submit();
+    }
+});
+});
+</script>

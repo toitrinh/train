@@ -1,0 +1,29 @@
+
+<h2 id="new-post-title"><em>Sharing your intersting articles with community !</em></h2>
+
+<div class="border-form-div" id="new-post-form-wrap">
+
+<%= render 'form' %>
+ 
+<%= link_to 'Back', posts_path %>
+</div>
+
+
+
+
+
+<script>
+$(document).ready(function () {
+$("#new_post").validate({
+debug: true,
+rules: {
+"post[title]": {required: true, minlength: 5},
+"post[text]": {required: true, minlength: 6}
+},
+
+submitHandler: function(form){
+      form.submit();
+    }
+});
+});
+</script>

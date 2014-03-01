@@ -1,0 +1,40 @@
+<h2 id="new-post-create"><em><%= link_to 'Create New Post', new_post_path %></em></h2>
+<div class="container">
+ 
+        <div class="row">
+
+            
+            <div class="col-md-12">
+
+                
+
+                <div class="row">
+
+
+                    <% if @user.posts.any? %>
+                    
+                    <%= render @posts %>
+                      
+      
+                    <% end %>
+                    
+                    
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <h4><a href="#">Like this blog?</a>
+                        </h4>
+                        <p>If you like this blog  share your articles with people!</p>
+                        <a class="btn btn-primary" target="_blank" href="<% root_path %>">View Blog</a>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+<%= will_paginate @posts %>
+
+

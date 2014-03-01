@@ -1,0 +1,20 @@
+
+
+<div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h4><%= link_to post.title, post %>
+                                </h4>
+                                <p><%= post.text[0..98] %>....</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right"><%= post.comments.count %> comments</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star">
+                                        <%= link_to 'Edit', edit_post_path(post) %>
+
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>

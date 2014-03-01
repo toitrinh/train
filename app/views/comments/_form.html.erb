@@ -1,0 +1,12 @@
+<%= form_for([@post, @post.comments.build], remote: true) do |f| %>
+	<p>
+		<%= f.text_area :body, :class=>"input-block-level", :placeholder => 'Share your comment here..' %>
+		
+
+	</p>
+
+	<p>
+		<%= f.submit %>
+	</p>
+
+<% end %>
